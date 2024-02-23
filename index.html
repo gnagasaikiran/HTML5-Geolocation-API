@@ -1,0 +1,46 @@
+<!-- Defines types of documents : Html 5.O -->
+<!DOCTYPE html> 
+<!-- Defines types of documents : Html 5.O -->
+<html lang="en"> 
+	<!-- Defines languages of content : English -->
+	<head> 
+	<!-- Information about website and creator -->
+	<meta charset="UTF-8"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<!-- Defines the compatibility of version with browser -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<!-- for make website responsive -->
+	<meta name="author" content="Mr.X"> 
+	<meta name="Linkedin profile" content="WWW.linkedin.com/Mr.X_123" > 
+	<!-- To give information about author or owner -->
+	<meta name="description "
+	content="A better place to learn computer science"> 
+	<!-- to explain about website in few words -->
+	<title>Geolocation - API - HTML5</title> 
+	<!-- Name of website or content to display -->
+</head> 
+<body> 
+	<!-- Main content of website -->
+    <h1>Geolocation API in HTML5</h1>
+    <button id="getLocation">Get Location</button>
+</body>
+<script>
+    var getLoc = document.getElementById("getLocation");
+    getLoc.addEventListener('click', event => {
+        if('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(pos => {
+                let latitude = pos.coords.latitude;
+                let longitude = pos.coords.longitude;
+                console.log("Latitude ==>", latitude);
+                console.log("Longitude ==>", longitude);
+                console.log("Heading ==>", pos.coords.heading);
+                console.log("Timestamp ==>", new Date(pos.timestamp));
+            }, error => {
+                console.log("Denied by the user", error.code)
+            })
+        } else {
+            console.log("Geolocation Not supported");
+        }
+    })
+</script>
+</html> 
